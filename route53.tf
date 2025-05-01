@@ -22,3 +22,11 @@ resource "aws_route53_record" "tempo" {
   ttl     = "30"
   records = [aws_lb.tempo.dns_name]
 }
+
+resource "aws_route53_record" "mimir" {
+  zone_id = aws_route53_zone.private.zone_id
+  name    = format("mimir.%s.local",  var.project_name)
+  type    = "CNAME"
+  ttl     = "30"
+  records = [aws_lb.mimir.dns_name]
+}

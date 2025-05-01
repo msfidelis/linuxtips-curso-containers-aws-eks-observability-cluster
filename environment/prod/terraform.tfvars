@@ -63,6 +63,16 @@ karpenter_capacity = [
     instance_sizes     = ["large", "xlarge", "2xlarge"]
     capacity_type      = ["spot", "on-demand"]
     availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
-  },    
+  },
+  {
+    name               = "mimir"
+    workload           = "mimir"
+    ami_family         = "Bottlerocket"
+    ami_ssm            = "/aws/service/bottlerocket/aws-k8s-1.31/x86_64/latest/image_id"
+    instance_family    = ["t3", "t3a", "c6", "c6a", "c7", "c7a"]
+    instance_sizes     = ["large", "xlarge", "2xlarge"]
+    capacity_type      = ["spot", "on-demand"]
+    availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  },      
 
 ]
