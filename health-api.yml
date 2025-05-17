@@ -46,7 +46,7 @@ spec:
                 tag: latest
                 pullPolicy: IfNotPresent
               createNamespace: true
-              iam: ""
+              iam: "dummy-iam-role"
 
               type: ClusterIP
               ports:
@@ -174,7 +174,7 @@ spec:
                 tag: latest
                 pullPolicy: IfNotPresent
               createNamespace: true
-              iam: ""
+              iam: "dummy-iam-role"
 
               type: ClusterIP
               ports:
@@ -302,7 +302,7 @@ spec:
                 tag: latest
                 pullPolicy: IfNotPresent
               createNamespace: true
-              iam: ""
+              iam: "dummy-iam-role"
 
               type: ClusterIP
               ports:
@@ -430,7 +430,7 @@ spec:
                 tag: latest
                 pullPolicy: IfNotPresent
               createNamespace: true
-              iam: ""
+              iam: "dummy-iam-role"
 
               type: ClusterIP
               ports:
@@ -560,7 +560,7 @@ spec:
                 tag: latest
                 pullPolicy: IfNotPresent
               createNamespace: true
-              iam: ""
+              iam: "dummy-iam-role"
 
               type: ClusterIP
               ports:
@@ -688,7 +688,7 @@ spec:
                 tag: latest
                 pullPolicy: IfNotPresent
               createNamespace: true
-              iam: ""
+              iam: "dummy-iam-role"
 
               type: ClusterIP
               ports:
@@ -822,7 +822,7 @@ spec:
                 tag: latest
                 pullPolicy: IfNotPresent
               createNamespace: true
-              iam: ""
+              iam: "dummy-iam-role"
 
               type: ClusterIP
               ports:
