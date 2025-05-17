@@ -28,12 +28,29 @@ datasources:
         isDefault: false
         jsonData:
           maxLines: 1000
+          derivedFields:
+          - datasourceName: Tempo
+            datasourceUid: Tempo
+            matcherRegex: '\\"traceID\\":\\"([^\\"]+)\\"'
+            name: traceID
+            url: $$${__value.raw}
+
 
       - name: Tempo
         type: tempo
         access: proxy
         url: http://tempo-gateway.tempo.svc.cluster.local
         basicAuth: false
+        jsonData:
+          tracesToMetrics:
+            datasourceUid: 'Mimir'
+          serviceMap:
+            datasourceUid: 'Mimir'
+          nodeGraph:
+            enabled: true
+          tracesToLogs:
+            datasourceUid: 'Loki'
+
 
       - name: Mimir
         type: prometheus
@@ -167,6 +184,28 @@ traces:
             enabled: true
     grpc:
         enabled: true
+
+metricsGenerator:
+  enabled: true
+  registry:
+    external_labels:
+      source: tempo
+  config: 
+    storage:
+      remote_write: 
+      - url: "http://mimir-nginx.mimir.svc.cluster.local:80/api/v1/push"
+        send_exemplars: true
+
+overrides:
+  defaults:
+    metrics_generator:
+      processors: [service-graphs, span-metrics, local-blocks]
+
+global_overrides:
+  defaults:
+    metrics_generator:
+      processors: [service-graphs, span-metrics, local-blocks]
+
     VALUES
     }
 
